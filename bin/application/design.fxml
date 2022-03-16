@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" visible="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.ControllerClass">
+  <children>
+    <AnchorPane layoutX="0.0" layoutY="0.0" minHeight="25.0" prefHeight="25.0" prefWidth="708.0">
+      <children>
+        <MenuBar disable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="false" prefHeight="25.0" prefWidth="708.0" useSystemMenuBar="false" visible="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#LoadFile" text="Load contacts file" />
+                <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem mnemonicParsing="false" onAction="#LoadTemplate" text="Load Saved template" />
+                <MenuItem disable="true" mnemonicParsing="false" onAction="#SaveFile" text="save Template" fx:id="Save" />
+                <MenuItem disable="true" mnemonicParsing="false" onAction="#SaveAsFile" text="save Template as" fx:id="SaveAs" />
+                <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem disable="true" mnemonicParsing="false" onAction="#SaveAsContacts" text="save Contacts as" fx:id="SaveContacts" />
+                <SeparatorMenuItem mnemonicParsing="false" />
+                <MenuItem disable="false" mnemonicParsing="false" onAction="#Close" text="Exit" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Email">
+              <items>
+                <MenuItem disable="true" mnemonicParsing="false" onAction="#SMTP" text="Set SMTP Server" fx:id="SMTPServer" />
+                <MenuItem disable="true" mnemonicParsing="false" onAction="#setPort" text="Set port number" fx:id="PortN" />
+                <MenuItem disable="true" mnemonicParsing="false" onAction="#ResetSettings" text="Reset SMTP and Port" fx:id="Reset" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+      </children>
+    </AnchorPane>
+    <AnchorPane layoutX="0.0" layoutY="25.0" prefHeight="475.0" prefWidth="700.0" visible="true">
+      <children>
+        <Button id="ab" fx:id="PDFBtn" cancelButton="false" defaultButton="false" disable="true" focusTraversable="true" layoutX="21.0" layoutY="433.0" mnemonicParsing="false" onAction="#CreatePDF" prefHeight="-1.0" text="Create PDF" visible="true" />
+        <Button id="EMContacts" fx:id="EmailContacts" disable="true" layoutX="117.0" layoutY="433.0" mnemonicParsing="false" onAction="#SendEM" text="Email Contacts" visible="true" />
+        <TextArea id="TextF" fx:id="textArea" disable="false" editable="false" layoutX="23.0" layoutY="36.0" onKeyTyped="#TextEntered" prefHeight="363.0" prefWidth="658.0" promptText="Enter message" visible="true" wrapText="true" />
+        <MenuButton id="MBtn" fx:id="MenuBtn" disable="true" layoutX="503.0" layoutY="433.0" mnemonicParsing="false" prefWidth="176.0" text="Choose Tags">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#addTitle" text="[[TITLE]]" fx:id="Title" />
+            <MenuItem mnemonicParsing="false" onAction="#AddFullName" text="[[FULL_NAME]]" fx:id="FullName" />
+            <MenuItem mnemonicParsing="false" onAction="#addEmail" text="[[EMAIL]]" fx:id="Email" />
+            <MenuItem mnemonicParsing="false" onAction="#addmailing" text="[[MAILING_ADDRESS]]" fx:id="MailingAddress" />
+          </items>
+        </MenuButton>
+        <Button id="showContacts" fx:id="ShowCon" disable="true" layoutX="231.0" layoutY="433.0" mnemonicParsing="false" onAction="#ShowContacts" text="Show contacts" />
+        <TextField fx:id="Subject" disable="true" layoutX="31.0" layoutY="6.0" prefWidth="200.0" promptText="Enter Subject" />
+        <ScrollPane fx:id="ScrollP" layoutX="0.0" layoutY="0.0" prefHeight="407.0" prefWidth="700.0" visible="false">
+          <content>
+            <GridPane fx:id="gridP" alignment="CENTER" gridLinesVisible="true" hgap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="672.0" visible="true">
+              <children>
+                <Label fx:id="titleLabel" prefWidth="79.0" text="" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Label fx:id="nameLabel" prefWidth="202.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label fx:id="emailLabel" prefWidth="201.0" text="" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                <Label fx:id="mailingLabel" prefWidth="168.0" text="" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="82.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.0" minWidth="10.0" prefWidth="174.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="236.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="180.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </content>
+        </ScrollPane>
+        <Button fx:id="Edit" disable="false" layoutX="345.0" layoutY="433.0" mnemonicParsing="false" onAction="#Editable" prefWidth="102.0" text="Edit" visible="false" />
+        <Button fx:id="AddContactsBtn" disable="true" layoutX="475.0" layoutY="434.0" mnemonicParsing="false" onAction="#AddContacts" prefWidth="102.0" text="Add" visible="false" />
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>
